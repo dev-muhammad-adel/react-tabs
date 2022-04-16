@@ -1,12 +1,24 @@
 import styled from "styled-components";
 import React, { useEffect, useState } from "react";
-
+const positionBorder =
+  {
+    top: "bottom",
+    left: "right",
+    right: "left",
+    bottom: "top",
+  } || "bottom";
 const StyledButton = styled.button`
-  border-color: #eee0 #eee0 ${(props) => props.color || "transparent"} #eee0;
   overflow: hidden;
+  all: unset;
+  border-${(props) => positionBorder[props.tabPosition]}: 2px solid ${(props) =>
+  props.color || "transparent"};
   color: ${(props) => props.color || "#000"};
-  padding: 8px 20px;
-  transition: border 0.4s;
+  padding: 8px;
+  transition: border, color;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+
+  cursor: pointer;
   &:hover {
     color: ${(props) => props.hover};
   }

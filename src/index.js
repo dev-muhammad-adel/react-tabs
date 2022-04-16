@@ -11,6 +11,7 @@ root.render(
     }}
     fallback="no data"
     defaultKey="2"
+    tabPosition="top"
   >
     <Tabs.TabPane key={1} title={"One"}>
       First
