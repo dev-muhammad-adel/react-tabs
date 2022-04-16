@@ -1,14 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import Tabs from "./components/Tabs";
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <Tabs
+    onChange={(key) => {
+      console.log({ key });
+    }}
+    // defaultKey
+  >
+    <Tabs.TabPane key={1} title={"one"}>
+      first
+    </Tabs.TabPane>
+    <Tabs.TabPane key={2} title={"two"}>
+      Second
+    </Tabs.TabPane>
+    <Tabs.TabPane key={3} title={"three"}>
+      third
+    </Tabs.TabPane>
+  </Tabs>
 );
 
 // If you want to start measuring performance in your app, pass a function
