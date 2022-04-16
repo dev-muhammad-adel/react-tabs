@@ -9,17 +9,24 @@ const TabWraper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
+  .tabs-list{
+    border-bottom:1px solid #ccc
+  }
+  .selected-tab-content {
+    padding: 10px;
+    border
+  }
 `;
-function Tabs({ children, onChange, defaultKey = null }) {
+function Tabs({ children, onChange, defaultKey = null, fallback }) {
   const [value, setValue] = useState(
     defaultKey ? defaultKey : children.find((el) => el.key).key
   );
-  const content = React.Children.map(children, (child, index) =>
+  const customTabs = React.Children.map(children, (child, index) =>
     React.cloneElement(
       child,
       {
-        hover: "#26c5ff8c",
-        color: child.key == value && "#26c5ff8c",
+        hover: "#007bff",
+        color: child.key == value && "#007bff",
         disabled: !child.key,
         onClick: () => {
           onChange(child.key, child.props.title);
@@ -32,9 +39,9 @@ function Tabs({ children, onChange, defaultKey = null }) {
 
   return (
     <TabWraper>
-      <div>{content}</div>
-      <div>
-        {value ? children.find((el) => el.key == value).props.children : "no"}
+      <div className="tabs-list">{customTabs}</div>
+      <div className="selected-tab-content">
+        {children.find((el) => el.key == value)?.props?.children || fallback}
       </div>
     </TabWraper>
   );

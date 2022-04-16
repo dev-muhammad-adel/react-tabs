@@ -6,6 +6,7 @@ const StyledButton = styled.button`
   overflow: hidden;
   color: ${(props) => props.color || "#000"};
   padding: 8px 20px;
+  transition: border 0.4s;
   &:hover {
     color: ${(props) => props.hover};
   }

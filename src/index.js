@@ -9,16 +9,17 @@ root.render(
     onChange={(key) => {
       console.log({ key });
     }}
-    // defaultKey
+    fallback="no data"
+    defaultKey="2"
   >
-    <Tabs.TabPane key={1} title={"one"}>
-      first
+    <Tabs.TabPane key={1} title={"One"}>
+      First
     </Tabs.TabPane>
-    <Tabs.TabPane key={2} title={"two"}>
+    <Tabs.TabPane key={2} title={"Two"}>
       Second
     </Tabs.TabPane>
-    <Tabs.TabPane key={3} title={"three"}>
-      third
+    <Tabs.TabPane key={3} title={"Three"}>
+      Third
     </Tabs.TabPane>
   </Tabs>
 );
