@@ -1,54 +1,47 @@
 import "./tabs.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-const positionList =
-  {
+const positionList = () =>
+  ({
     top: "row",
     left: "column",
     right: "column",
     bottom: "row",
-  } || "column";
-const positionContainer =
-  {
+  } || "column");
+const positionContainer = () =>
+  ({
     top: "column",
     left: "row",
     right: "row-reverse",
     bottom: "column-reverse",
-  } || "column";
-console.log(positionContainer["dsfsdf"]);
+  } || "column");
 
-const positionBorder =
-  {
+const positionBorder = () =>
+  ({
     top: "bottom",
     left: "right",
     right: "left",
     bottom: "top",
-  } || "bottom";
+  } || "bottom");
 const TabWraper = styled.div`
   border-color: #eee0 #eee0 ${(props) => props.color} #eee0;
   padding: 8px 20px;
   display: flex;
-  flex-direction: ${(props) => positionContainer[props.tabPosition]};
+  flex-direction: ${(props) => positionContainer()[props.tabPosition]};
   gap: 5px;
   .tabs-list {
-    border-${(props) => positionBorder[props.tabPosition]}: 1px solid #ccc;
+    border-${(props) => positionBorder()[props.tabPosition]}: 1px solid #ccc;
     display: flex;
     gap: 5px;
-    flex-direction: ${(props) => positionList[props.tabPosition]};
+    flex-direction: ${(props) => positionList()[props.tabPosition]};
     padding: 0;
   }
   .selected-tab-content {
     padding: 10px;
   }
 `;
-function Tabs({
-  children,
-  onChange,
-  defaultKey = null,
-  fallback,
-  tabPosition,
-}) {
+function Tabs({ children, onChange, defaultKey, fallback, tabPosition }) {
   const [value, setValue] = useState(
     defaultKey ? defaultKey : children.find((el) => el.key).key
   );
